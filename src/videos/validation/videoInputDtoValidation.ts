@@ -8,17 +8,19 @@ export const createVideoInputDTOValidation = (data: CreateVideoInputModel): Fiel
     if (
         !data.title ||
         typeof data.title !== 'string' ||
-        data.title.trim().length < 2
+        data.title.trim().length === 0 ||
+        data.title.trim().length > 40
     ) {
-        errors.push({ field: 'title', message: 'Invalid title' });
+        errors.push({ field: 'title', message: 'Title must be between 1 and 40 characters' });
     }
 
     if (
         !data.author ||
         typeof data.author !== 'string' ||
-        data.author.trim().length < 8
+        data.author.trim().length === 0 ||
+        data.author.trim().length > 20
     ) {
-        errors.push({ field: 'author', message: 'Invalid author' });
+        errors.push({ field: 'author', message: 'Author must be between 1 and 20 characters' });
     }
 
     if (!Array.isArray(data.availableResolutions)) {
