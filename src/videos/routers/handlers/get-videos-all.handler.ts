@@ -3,5 +3,5 @@ import { inMemoryDB } from "../../../db/in-memory.db";
 import { HttpStatus } from "../../../core/types/http-statuses";
 
 export function getAllVideosHandler(req: Request, res: Response) {
-    res.sendStatus(HttpStatus.Ok).send(inMemoryDB.videos)
+    res.status(HttpStatus.Ok).send(inMemoryDB.videos);
 }

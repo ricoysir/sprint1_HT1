@@ -5,7 +5,7 @@ import { HttpStatus } from "../../../core/types/http-statuses";
 import { updateVideoInputDTOValidation } from "../../validation/updateVideoInputDTOValidation";
 import { UpdateVideoInputModel } from "../../dto/update_video.input-dto";
 
-export function updateVideoHandler(
+export function updateVideoByIdHandler(
     req: Request<{ id: string }>,
     res: Response,
 ) {

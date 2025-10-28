@@ -3,7 +3,7 @@ import { inMemoryDB } from "../../../db/in-memory.db";
 import { HttpStatus } from "../../../core/types/http-statuses";
 import { CreateAPIError } from "../../../core/utils/error-factories.utils";
 
-export function getAllVideosHandler(req: Request, res: Response) {
+export function getVideoByIdHandler(req: Request, res: Response) {
     const id = parseInt(req.params.id);
     const video = inMemoryDB.videos.find((v) => v.id === id);
     

@@ -3,7 +3,7 @@ import { inMemoryDB } from "../../../db/in-memory.db";
 import { HttpStatus } from "../../../core/types/http-statuses";
 import { CreateAPIError } from "../../../core/utils/error-factories.utils";
 
-export function getAllVideosHandler(req: Request, res: Response) {
+export function deleteVideoByIdHandler(req: Request, res: Response) {
     const id = parseInt(req.params.id);
     const videoIndex = inMemoryDB.videos.findIndex((v) => v.id === id);
 
