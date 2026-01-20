@@ -44,10 +44,26 @@ export const updateVideoInputDTOValidation = (data: UpdateVideoInputModel): Fiel
         errors.push({ field: 'minAgeRestriction', message: 'minAgeRestriction must be between 1 and 18 or null' });
     }
 
-    if (!data.publicationDate ||
-        isNaN(new Date(data.publicationDate).getTime())
-    ) {
-        errors.push({ field: 'publicationDate', message: 'publicationDate must be a valid ISO date string' });
+    if (!data.publicationDate) {
+        errors.push({ field: 'publicationDate', message: 'publicationDate is required' });
+    } 
+
+    else if (typeof data.publicationDate !== 'string') {
+        errors.push({ field: 'publicationDate', message: 'publicationDate must be a string' });
+    }
+
+    else if (data.publicationDate.trim().length === 0) {
+        errors.push({ field: 'publicationDate', message: 'publicationDate must not be empty' });
+    }
+
+    else {
+        const date = new Date(data.publicationDate);
+    
+        if (isNaN(date.getTime())) {
+            errors.push({ field: 'publicationDate', message: 'publicationDate must be a valid ISO date string' });
+        }
+        else if (!data.publicationDate.includes('T') || !data.publicationDate.endsWith('Z')) {
+        }
     }
 
     return errors;
